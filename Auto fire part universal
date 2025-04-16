@@ -1,0 +1,485 @@
+local A=game:GetService("Players")local B=game:GetService("Workspace")local C=A.LocalPlayer local D=B.CurrentCamera local E=false local F local G=1e-12 local H=false local I=UDim2.new(0.5,-80,0,20)local J=false local K={["StuddedKillPart"]=true,["TeleportPart"]=true,["무지개 파트"]=true,["giver"]=true,["Block"]=true}local function L()if H then return end H=true pcall(function()game.StarterGui:SetCore("SendNotification",{Title="Script Fire Block",Text="BY AMDZY_1",Duration=5})end)end local function M()if F then I=F:FindFirstChild("Frame")and F.Frame.Position or I F:Destroy()end F=Instance.new("ScreenGui",C:WaitForChild("PlayerGui"))F.Name="FIRE_GUI"local N=Instance.new("Frame")N.Name="Frame"N.Size=UDim2.new(0,160,0,100)N.Position=I N.BackgroundColor3=Color3.fromRGB(0,0,0)N.BorderSizePixel=2 N.Active=true N.Draggable=true N.Parent=F local O=Instance.new("TextLabel")O.Size=UDim2.new(1,-20,0,20)O.Text="Fire Block BY AMDZY_1"O.TextColor3=Color3.fromRGB(255,255,255)O.BackgroundColor3=Color3.fromRGB(30,30,30)O.Font=Enum.Font.SourceSansBold O.TextSize=13 O.TextXAlignment=Enum.TextXAlignment.Left O.Parent=N local P=Instance.new("TextButton")P.Size=UDim2.new(0,20,0,20)P.Position=UDim2.new(1,-20,0,0)P.Text="-"P.TextColor3=Color3.new(1,1,1)P.BackgroundColor3=Color3.fromRGB(50,50,50)P.Font=Enum.Font.SourceSansBold P.TextSize=14 P.Parent=N local Q=Instance.new("TextButton")Q.Size=UDim2.new(1,0,0,35)Q.Position=UDim2.new(0,0,0,22)Q.Text=E and"OFF FIRE"or"ON FIRE"Q.TextColor3=Color3.fromRGB(255,255,255)Q.BackgroundColor3=E and Color3.fromRGB(200,0,0)or Color3.fromRGB(0,200,0)Q.Font=Enum.Font.SourceSansBold Q.TextSize=16 Q.Parent=N local R=Instance.new("TextBox")R.Size=UDim2.new(1,-10,0,20)R.Position=UDim2.new(0,5,0,62)R.Text=tostring(G)R.PlaceholderText="Cooldown (detik)"R.TextColor3=Color3.new(1,1,1)R.BackgroundColor3=Color3.fromRGB(40,40,40)R.Font=Enum.Font.SourceSans R.TextSize=14 R.ClearTextOnFocus=false R.Parent=N R.FocusLost:Connect(function()local S=tonumber(R.Text)if S and S>=1e-9 and S<=10 then G=S else R.Text=tostring(G)end end)Q.MouseButton1Click:Connect(function()E=not E Q.Text=E and"OFF FIRE"or"ON FIRE"Q.BackgroundColor3=E and Color3.fromRGB(200,0,0)or Color3.fromRGB(0,200,0)end)P.MouseButton1Click:Connect(function()J=not J if J then for _,T in ipairs(N:GetChildren())do if T~=O and T~=P then T.Visible=false end end N.Size=UDim2.new(0,160,0,20)P.Text="+"else for _,T in ipairs(N:GetChildren())do T.Visible=true end N.Size=UDim2.new(0,160,0,100)P.Text="-"end end)L()end local function U(V)if not V:IsA("BasePart")then return false end if K[V.Name]then return false end if not(V.Name:match("^Gudock")or V.Name=="사라지는 파트")then return false end if not V:FindFirstChildOfClass("TouchTransmitter")then return false end for _,W in ipairs(V:GetDescendants())do if W:IsA("Script")or W:IsA("LocalScript")then return true end end return false end local function X()local Y=C.Character if not Y or not Y:FindFirstChild("HumanoidRootPart")then return end local Z=Y.HumanoidRootPart for _,a0 in ipairs(B:GetDescendants())do if U(a0)then firetouchinterest(Z,a0,0)end end task.wait(0.01)for _,a0 in ipairs(B:GetDescendants())do if U(a0)then firetouchinterest(Z,a0,1)end end end task.spawn(function()while true do if E then pcall(X)end task.wait(G)end end)M()C.CharacterAdded:Connect(function()E=false task.wait(1)M()end)
+local A=game:GetService("Players")local B=game:GetService("Workspace")local C=A.LocalPlayer local D=B.CurrentCamera local E=false local F local G=1e-12 local H=false local I=UDim2.new(0.5,-80,0,20)local J=false local K={["StuddedKillPart"]=true,["TeleportPart"]=true,["무지개 파트"]=true,["giver"]=true,["Block"]=true}local function L()if H then return end H=true pcall(function()game.StarterGui:SetCore("SendNotification",{Title="Script Fire Block",Text="BY AMDZY_1",Duration=5})end)end local function M()if F then I=F:FindFirstChild("Frame")and F.Frame.Position or I F:Destroy()end F=Instance.new("ScreenGui",C:WaitForChild("PlayerGui"))F.Name="FIRE_GUI"local N=Instance.new("Frame")N.Name="Frame"N.Size=UDim2.new(0,160,0,100)N.Position=I N.BackgroundColor3=Color3.fromRGB(0,0,0)N.BorderSizePixel=2 N.Active=true N.Draggable=true N.Parent=F local O=Instance.new("TextLabel")O.Size=UDim2.new(1,-20,0,20)O.Text="Fire Block BY AMDZY_1"O.TextColor3=Color3.fromRGB(255,255,255)O.BackgroundColor3=Color3.fromRGB(30,30,30)O.Font=Enum.Font.SourceSansBold O.TextSize=13 O.TextXAlignment=Enum.TextXAlignment.Left O.Parent=N local P=Instance.new("TextButton")P.Size=UDim2.new(0,20,0,20)P.Position=UDim2.new(1,-20,0,0)P.Text="-"P.TextColor3=Color3.new(1,1,1)P.BackgroundColor3=Color3.fromRGB(50,50,50)P.Font=Enum.Font.SourceSansBold P.TextSize=14 P.Parent=N local Q=Instance.new("TextButton")Q.Size=UDim2.new(1,0,0,35)Q.Position=UDim2.new(0,0,0,22)Q.Text=E and"OFF FIRE"or"ON FIRE"Q.TextColor3=Color3.fromRGB(255,255,255)Q.BackgroundColor3=E and Color3.fromRGB(200,0,0)or Color3.fromRGB(0,200,0)Q.Font=Enum.Font.SourceSansBold Q.TextSize=16 Q.Parent=N local R=Instance.new("TextBox")R.Size=UDim2.new(1,-10,0,20)R.Position=UDim2.new(0,5,0,62)R.Text=tostring(G)R.PlaceholderText="Cooldown (detik)"R.TextColor3=Color3.new(1,1,1)R.BackgroundColor3=Color3.fromRGB(40,40,40)R.Font=Enum.Font.SourceSans R.TextSize=14 R.ClearTextOnFocus=false R.Parent=N R.FocusLost:Connect(function()local S=tonumber(R.Text)if S and S>=1e-9 and S<=10 then G=S else R.Text=tostring(G)end end)Q.MouseButton1Click:Connect(function()E=not E Q.Text=E and"OFF FIRE"or"ON FIRE"Q.BackgroundColor3=E and Color3.fromRGB(200,0,0)or Color3.fromRGB(0,200,0)end)P.MouseButton1Click:Connect(function()J=not J if J then for _,T in ipairs(N:GetChildren())do if T~=O and T~=P then T.Visible=false end end N.Size=UDim2.new(0,160,0,20)P.Text="+"else for _,T in ipairs(N:GetChildren())do T.Visible=true end N.Size=UDim2.new(0,160,0,100)P.Text="-"end end)L()end local function U(V)if not V:IsA("BasePart")then return false end if K[V.Name]then return false end if not(V.Name:match("^Gudock")or V.Name=="사라지는 파트")then return false end if not V:FindFirstChildOfClass("TouchTransmitter")then return false end for _,W in ipairs(V:GetDescendants())do if W:IsA("Script")or W:IsA("LocalScript")then return true end end return false end local function X()local Y=C.Character if not Y or not Y:FindFirstChild("HumanoidRootPart")then return end local Z=Y.HumanoidRootPart fo f+;AXj/E?m+^/H/_m*UZX+*HH*m^_+*_Z*+d+J;?/0JdX__JHHH^dt__Z/Jm^<^zbZJ*??_ZXX?X3Zd?_mZdH;W?dXjdJ+m;^^;ZbZ??_/XZjJ?_d/_^/+HdV/d_*mZZ^H;*/+/d?;OHXdjH+_mHdb*dZm^Xd*;Hb+JZ;HXbb/?Z^+_H/*?d__*mb/ZZJJd_Z_bZ?N+XXm?0?d+^/_jmbJ^Z*dZcbjJ:^m;^JH?b^/XZb+HH+*XdbmmNmm_X;jZZ?;Xd/H?m>/++*mj/:/dm*+jdJ*mb_+;/Z*+X^*XH/+?ZXHX_Z*HZ++dHj*bJ^i^X/*bJ^_+b;//H?m_E_bHjZJdHd2ZXJZ^H^m*X/jJZXZ/*?dHLd*d?H+H_d*;mZHbd+*Xf/+b^?XNJ/H/dm*WH*l*Gy_mH^?Zj/m+d+*/??dOX<JX?jm?d^md;j/bZmmX?;mb^Jj_?XXHdH?_?jdZXH*^ZdJjXb?mZX/;Z/JJ_;_XZjJ?_X__Z*JH___dZ;JZ_d_^ZX>/X?mXA_:j/?+.mdCHjHdd_d/bHb+^_^_/H/b+_+jjH/X(_mm;?*pJd^HX?X?bjJd+HXm?I?jdbj*ZmwHY_dXZ<Zdm^*_/JHJnZ+r/8jjHkhm_^HHZmmJ*V*j?b^_;LXj/g?m+^/HjmHJ_d*bbHJ*mH*H;_bHJZ+Jbj/^?ZCHXd/dZH_Hdm*JmN^bXb;tJB?j+%Xm/^+H+X**j_m+n;d^*ZZZJ?X/;Z/JJ__/_?ZmH_d/dZ*JZ_mZd_ZHb_J^+Z;*H??m+__//d+_m?;m*_J/mZ^J*_m_JZ+6XX/m+9+Z*ZjmmX%*db*Um#m*^H;+bZ^H+mXJ?h?jdH*mHrZjmEdm*^mHJm^JbUbjHb_*j%?HH_{H_Z*JMjm^dZ;HZdmd+HbH/m?JX3Xj*bm*d?jH*_ZHmZ^JZjbb+d^Z;?b+Jd_+X;j^HZCZd?b/ZZJJd_//bjem^*;/j??md?dmj^ZjmmdjZEbjJ;+mj_?/*+jaH*djZH?m+_db+ZdJ;^HbHbd?j)?X*?jHZVbjHj_J;^H*H;_bHJZ+Jbj/^?ZUHXd/dZH_Hdm*JmPmj+b/*?b^H+_XH/ZHJXj_;HjH^dHdHZ*J+m;^^;ZbZ??_/XZjJ?_d/_HbmmZd^;X;*bb?c^*XyJjHQwJ_*/dm/IZd1*XZmd}^Jb-bb^_^_/mH/?ZrJX_?_HZmJ__H_ZZJJd_Z_bHBm^_//Hm+H+d_;jH,Hm/;**+m+^*X/;ZHmJ^^/X+/mm?r^XXj*H?JR_d*m?ZJ;dX;*b??j^dXmZ?HXddd?Z?md^Xd*/ZbJmX+?;ZH/?HdmjjZ/Z/K_dm*jZZdHd_/;Jd+Z;jXS/++HWm_JH0Hj^b;*b?mHJ_^H;Z/J^j+ZXb?Hidd;_HHHZ_mHdZ;JmjJZ^bbHb_H;_dj/?jZuMj_**b,_m;Xm**Z/J?^mj?/m?_G/Xd?_Hj^m_*j/b?mmX?;mb^Jj;jXm/_H/+d/_j*H;_jdf;^?m^_*_XHb_Jd+;/cjb?dI__ZjZZ___d**;mj+m+^jmb_^_DHX_/dH;_{_jbZm*^J;+*;b^JZ^ZX?H/?ZeJX_Z/H^__dJZjZjddX?Xmb^?j+mXj?uHjz;dmjZm+addj;?Z*dj^;bjb^+H+H/*H+?d0;_HHHHdm;dHZHZdJj+?;*Jj?Z+b/H/_mjdmjH*_ZHmZ^JZjZd+d^*j?/m?_o/Xd?_H*=;*ZZ+J_+md_Z_/HJ_^dX;?S?;</_^HfH*^Z*+bmJz^+;^bfbj?/;_X*/;+jlkd^bmm;__^H*_ZdJ;;G;/HZ?j_XXbj;Hmam_+b?Zmm^dj/?b++d+jj?b^HJ+*X*j/mX4*db*<JXm*^H;+bZ^H^Xj*/_O++d_;jHIH6dd;*HmHmd^;;HJHJ__*XH?+E*X__Z*JH___d+/mb/^/Xm/+bd0*+b;+j/?*dXdbj?ZmsX^j*ZZ*+d+J;?/mJXPRXZ/*mXm?;Z*XmX^ZX?;m?dJ;^?XXbd%+GbX/jZ?+mH_*jd?mJ;d/;ZZ+?_^*;dH+H/d*_+H+m*^/dZ/mZ^m/^+;mH??;^XX*/?Hj+d_mbZZ^!Xd**?/}md^mj?/X3dL?j?HdmX#*;Z*JHXJ?dZ//Z+9m^d;//_?md?_*ZdZJC?dmjXbjmZd*/X/JJ?^X/XHZ?Zd*_dZ+ZbF/_+*m?ZJ*dX;*b?Hm^dXmZ?Hm%^_jHjZmm^djZjbmJ^^jbj/m?_a/Xd?_H*.;jjjdJ_^_;dZ_/HJ_^dX;?<?d+^/_jmJD^Z;HbmmHJ_^H;Z/J^j+ZXb?Hm<__*^jZNjJ9dj**bbd_^_X?bXJd+_/Hj/m*GZX+*HH*^X^{;/Z+Jm+<bj/jQdfJX?jm?Xmj_Zj*JXJJd?;XJX+Z^Zj*/_p+pbX/j+Hm^ZdjjXZ*m?+m*dbmW?+mX_j/?dX__*j;:j^?;jXJ?Zmd;7Xj/&?m+^/Hj;HmmA_*j*byd2dd*^m_Jm_Jj!?_+TQj_ujmH^_H_^*XbJdHdd/*bZm++H;*?_?*+?d{/dHjm/j_*^H+mdd*/d/J?m+jjX/*Hb4k*XjbZ;mmdm*+??Jm^^;jH??j++X//*Hj_!_Zb?ZJm+^bZjbn+dXH/HHJ+w+j_/?_H*L;jj*:J^^b*jXObjJ*+bb_/*?;Xj_AZ^mj_j^:*jZ*Jb*_;*b;^j+GjdZm{dX_dHj_Hdm;*w;JZ?JmdXXNbZJ*_d_J/?Hm+XdjjZH*^X^?/ZbX^XXZj?/m}d+;X?jX?dd+_d*jb?m**j*d?dJ*^?XjbdHJ+?Xd/dJmmb_/*mZm^V^bbj/J+H^d/XHZCHOmXX*jHZdZ****bbJf;l;*/H?++Z/HjmHJ_R_jbbmddL^j;ObmJ^;HX;/mHG+*X**&g1vd_^H_ZH?JXZ/MJP?j+nXm/^+HEbX/jZ?+mH_*jd?mJbd/;ZZ+?_^*;dH+H/d*_+H+m*^/dZ/mZ^m/^+;mH?J^vJX*/*H/dX_**bZ2^X^J*?bmmX+A;Zb*=d=JX?jm?Xmj_Zj*JXJ?XZ;XJX+Z_?XmHd?;+?_X/dm+mdd;;HZdJH*_XH/b?d+mjX/*HHQ+_ZHHZb%/dZj+bHm*ddjm/bJ/+Z;+j_?*+d*+*/J*m+*+b*?/JZ_m;^b/?++m*?jmH^-jjj*mZ^mj*j;mb_?/^db_/*?;XjjdZ^Hj_j^s*jZ*Jb*_;^Z+Jd^/X_/m?Zd*_?/+HdC/^H*mZZ+/^+jm//+/_mj+/dm*ObX+*/H*^Xd*;Hb+JZ;HXm/J+E_H*HjsyDmjd<*mZ^dH^;;m/fJ*^*_h?5?d+^/_ZmJ.8_j_;HZ_md^;b./JJ?+m;Xjx?Z+**dj/H?mm_X;jZZm*XXX?HZ?XXXjZZ?Hmdd_;j?ZXQd;+*;b^JZ^ZX?H/?ZVJX_Z/H^++_dj/Z_mmdZ/*b?m+^d;/jH?m+Z*/j+Jmm/*/bmJ+mdX*;bZ+?/^*jXj*Hbmw_**G(jJO^J;*Zd+/^ZXI/X?mX&_J/?Hm+Xd7jZH*^dd/*?bmmX+j;Zb*UX9?*ZjXWXdZ;?*mJdm;d?;XZd++^dX;/H+H+d_;jH7H4dd;*HmHmd^;;HJH?d+;_H/dHHX_dH*bZdmm;X**bHJ+^ZbHb^?X1J/H/dm*}ZX+*HH*d_d**?/omd^jX/J_?^^+Xd/*mdmJdm*jJXm*^b;%?XJ*+bXW?<?*&b_1H5H*mHd+*ZmHJm^Jbp?_+X_jjd/Z+jmP_jj*Zb__d**;mjmdX^jmHS+_X5_jj5Hmn^jHj^ZXJJ*H;/?*+HXd/HH?RbXHX_jXEaEd_^H_Zm+JXFb+Ju?j+8Xm/^+HAbX/jZ?+mH_*jd?m??+*/Xbb?;+mXm/+m?(m_^jjJ?mjd+*/Z*Jj;,XjHZ?m^X_l/Zm/%_d?jXHdm_*H*_?*?X{mj?/J?+Wb/jjmmddZ*HH+b?dHd_;XJ.?y+/;+/mHBXj_mZdZ/U?dmjdJ+m^^XXJJH?/_*j}Hh+Xnmj)jjZ/__d_;?ZXmd^_bHbde*+Z;+j/?*dXdF*/H+mm^0Zjbj+d^*;??dJd_+_HjXH?PZdHH_Z++mdd*/?JJm_?XZ/b+HvH**Zd
+-- Chunk 1
+local var_1 = "VAL_1462"
+local temp_0 = "23zKCdN5sl"
+local temp_1 = "CGQGgLOcJv"
+local temp_2 = "14mXRoEuzF"
+local temp_3 = "Gkry0J3D2a"
+local temp_4 = "WvcNiATK8Z"
+local temp_5 = "9fPsmDgRxq"
+local temp_6 = "MUC4JlyOQa"
+local temp_7 = "1PHqBjgNAr"
+local temp_8 = "VnSfWozXeZ"
+local temp_9 = "2XLO0ebctH"
+print("LOG_1: " .. var_1)
+
+-- Chunk 2
+local var_2 = "VAL_5786"
+local temp_0 = "HLECzB3Q5J"
+local temp_1 = "tpHgWzjv16"
+local temp_2 = "7bWI7Mr6yd"
+local temp_3 = "1rblmNFYaJ"
+local temp_4 = "Qv6Zc9shg0"
+local temp_5 = "M2y3PV1Roq"
+local temp_6 = "oIRLU0WbAB"
+local temp_7 = "kAgyu6lvoC"
+local temp_8 = "0UoJXiAEB7"
+local temp_9 = "3SmDAuFTYH"
+print("LOG_2: " .. var_2)
+
+-- Chunk 3
+local var_3 = "VAL_2954"
+local temp_0 = "HRVE1y82Qw"
+local temp_1 = "UMY7kaIVWl"
+local temp_2 = "uSPZHOm5A9"
+local temp_3 = "D72xFGmep4"
+local temp_4 = "RtZ2AHJcqn"
+local temp_5 = "C07OWkXLug"
+local temp_6 = "9BVmAPfj1U"
+local temp_7 = "L1pr5nfdlq"
+local temp_8 = "HoxTCi5duK"
+local temp_9 = "jyh9Zb7nGX"
+print("LOG_3: " .. var_3)
+
+-- Chunk 4
+local var_4 = "VAL_9032"
+local temp_0 = "QAwOj3U8RE"
+local temp_1 = "xZnYgiUbDq"
+local temp_2 = "k0eyIt1Th4"
+local temp_3 = "UZLS2MrQcw"
+local temp_4 = "AHGXpnLI6E"
+local temp_5 = "5NPH1zsMr8"
+local temp_6 = "ylVfScQT90"
+local temp_7 = "R57EbBdUys"
+local temp_8 = "vUcAjEnYIw"
+local temp_9 = "WQJyiCHOmv"
+print("LOG_4: " .. var_4)
+
+-- Chunk 5
+local var_5 = "VAL_7250"
+local temp_0 = "IoFgRzjtpn"
+local temp_1 = "0uEqY5T37R"
+local temp_2 = "SrgXpbmqct"
+local temp_3 = "A47LfVEuBv"
+local temp_4 = "UNw63CTxY0"
+local temp_5 = "KvLn1eAzyu"
+local temp_6 = "mcogXpL5JH"
+local temp_7 = "7paY4ZqMJk"
+local temp_8 = "0Gcfs2YOnd"
+local temp_9 = "bPTME6JkSV"
+print("LOG_5: " .. var_5)-- Chunk 6
+local var_6 = "VAL_2801"
+local temp_0 = "9nDKPF5JhG"
+local temp_1 = "RMdfHVZTAN"
+local temp_2 = "IvwYXE4Cq9"
+local temp_3 = "Zb5MpVCdlk"
+local temp_4 = "xAvO7btFlz"
+local temp_5 = "JPqUYdSRei"
+local temp_6 = "GrkcMBqln8"
+local temp_7 = "s09uFybXnC"
+local temp_8 = "WMTv1UoCEX"
+local temp_9 = "phg6zAQBkw"
+print("LOG_6: " .. var_6)
+
+-- Chunk 7
+local var_7 = "VAL_4185"
+local temp_0 = "7SlqdQBNby"
+local temp_1 = "x0M1UKBVa5"
+local temp_2 = "GC2uYThMKR"
+local temp_3 = "pt8yLgoIvE"
+local temp_4 = "Bw7OALZ9eJ"
+local temp_5 = "RJq1sMDxe6"
+local temp_6 = "U3XQhwrWfJ"
+local temp_7 = "m4GpJEvbtY"
+local temp_8 = "yn05vTgWjR"
+local temp_9 = "NUShQKbxma"
+print("LOG_7: " .. var_7)
+
+-- Chunk 8
+local var_8 = "VAL_8820"
+local temp_0 = "l6xGpRI93B"
+local temp_1 = "qPNvS8wXCL"
+local temp_2 = "KzYBRWofmQ"
+local temp_3 = "rU9HWVpTbD"
+local temp_4 = "ZtsvqWGlCR"
+local temp_5 = "3C1RZQKaXy"
+local temp_6 = "HJ7UmvXeTg"
+local temp_7 = "YlkWNj5Q0c"
+local temp_8 = "tgFEysBZ9h"
+local temp_9 = "4cvrPbnK80"
+print("LOG_8: " .. var_8)
+
+-- Chunk 9
+local var_9 = "VAL_5637"
+local temp_0 = "0UnbKzEqXg"
+local temp_1 = "tPydkwRUZL"
+local temp_2 = "AbLYKJz6CH"
+local temp_3 = "kxlCOYSMrT"
+local temp_4 = "xBgRYu72zp"
+local temp_5 = "CIxXWNqodt"
+local temp_6 = "2yaoYI1thC"
+local temp_7 = "vNZ6jkUwsM"
+local temp_8 = "zVLGmiAf5e"
+local temp_9 = "qNpZ2Am6KC"
+print("LOG_9: " .. var_9)
+
+-- Chunk 10
+local var_10 = "VAL_3930"
+local temp_0 = "CGLnzqwrXI"
+local temp_1 = "JphwAYtdlz"
+local temp_2 = "W3tf6UpyBQ"
+local temp_3 = "KcH7sbIfQx"
+local temp_4 = "RUJNO4Vx3L"
+local temp_5 = "VdmnWZXu7T"
+local temp_6 = "lUmFfVq67i"
+local temp_7 = "hWJ5myaZpK"
+local temp_8 = "vWKo1uDPzn"
+local temp_9 = "iCVgXR2AbY"
+print("LOG_10: " .. var_10)
+
+-- Chunk 11
+local var_11 = "VAL_1209"
+local temp_0 = "nHwRPY72xZ"
+local temp_1 = "AfFJ0XykqG"
+local temp_2 = "hWVmcqiMjd"
+local temp_3 = "LJdSo5bEtQ"
+local temp_4 = "MpqUatnILW"
+local temp_5 = "4ybCkQPA6H"
+local temp_6 = "xzYEKRB71T"
+local temp_7 = "SPo95JgLyF"
+local temp_8 = "qJWtrgzVK3"
+local temp_9 = "NoH2sjQzYd"
+print("LOG_11: " .. var_11)
+
+-- Chunk 12
+local var_12 = "VAL_7654"
+local temp_0 = "3Kcjv2ptSm"
+local temp_1 = "rOgYbTzLMx"
+local temp_2 = "bHMlRAY68I"
+local temp_3 = "rYKAL0zvP9"
+local temp_4 = "VpCZIYtOBM"
+local temp_5 = "Aij8EGS4fy"
+local temp_6 = "gwMHkZVQJ9"
+local temp_7 = "qlmbWX3yNP"
+local temp_8 = "UAr2FXYTev"
+local temp_9 = "KMpjBLzqow"
+print("LOG_12: " .. var_12)
+
+-- Chunk 13
+local var_13 = "VAL_8190"
+local temp_0 = "9oRpvNSxLb"
+local temp_1 = "xV6aUlcpMG"
+local temp_2 = "7mbI0HCXAs"
+local temp_3 = "K3hmWZBESg"
+local temp_4 = "uTXY5FRkgc"
+local temp_5 = "NOavJXzHT8"
+local temp_6 = "Xt4QgFb7Ci"
+local temp_7 = "6jewxaZSkC"
+local temp_8 = "bPGEokimFZ"
+local temp_9 = "1QAvY7LpnR"
+print("LOG_13: " .. var_13)
+
+-- Chunk 14
+local var_14 = "VAL_6043"
+local temp_0 = "wIVU4qTS6B"
+local temp_1 = "LbfqhP3gEs"
+local temp_2 = "zMcx5yB1Jt"
+local temp_3 = "kABR8gVpqu"
+local temp_4 = "oXNTeKCsy5"
+local temp_5 = "QlR5cHpEAM"
+local temp_6 = "ATmrbXhWfq"
+local temp_7 = "uz8RPiFoL4"
+local temp_8 = "MdcGJXY2Zq"
+local temp_9 = "YpKb6ATJsv"
+print("LOG_14: " .. var_14)
+
+-- Chunk 15
+local var_15 = "VAL_1523"
+local temp_0 = "GXmblP01Zf"
+local temp_1 = "EHVkqOBRzA"
+local temp_2 = "mRflCd1W7H"
+local temp_3 = "OqPdiExXtT"
+local temp_4 = "KAjGc7hr6s"
+local temp_5 = "95FWuOtNbp"
+local temp_6 = "T2RCLV7YoX"
+local temp_7 = "WYAjglnuUT"
+local temp_8 = "vFP2sHKJYq"
+local temp_9 = "it7aE6YoQN"
+print("LOG_15: " .. var_15)-- Chunk 16
+local var_16 = "VAL_7392"
+local temp_0 = "MBZl7kCwU1"
+local temp_1 = "PdxRQIcfzA"
+local temp_2 = "qXhBKgn0vT"
+local temp_3 = "LoRpYteKWf"
+local temp_4 = "jAXuLGoi4P"
+local temp_5 = "DhcE7lrpnM"
+local temp_6 = "3uKLPmiXoJ"
+local temp_7 = "HFsc9IQjvm"
+local temp_8 = "XtY4LhoNZE"
+local temp_9 = "RgUpNyXKA7"
+print("LOG_16: " .. var_16)
+
+-- Chunk 17
+local var_17 = "VAL_4378"
+local temp_0 = "FwctSbQvLn"
+local temp_1 = "z8FAJK6qpH"
+local temp_2 = "xWb04sdjVK"
+local temp_3 = "ITlWRzB3nq"
+local temp_4 = "NyKqGVWTo2"
+local temp_5 = "jibAGDLYXV"
+local temp_6 = "TE0VC1tLgz"
+local temp_7 = "wHbO5Fx1MV"
+local temp_8 = "Q6kXrcAbtd"
+local temp_9 = "xoZqFh35KP"
+print("LOG_17: " .. var_17)
+
+-- Chunk 18
+local var_18 = "VAL_1876"
+local temp_0 = "ZUEOtkPq1C"
+local temp_1 = "FYgNivJqzL"
+local temp_2 = "pZmu0gCkAM"
+local temp_3 = "sTIa5mPNBJ"
+local temp_4 = "3VqdRLMYOA"
+local temp_5 = "yrmSElpxVj"
+local temp_6 = "cgtzo5IJWv"
+local temp_7 = "m9OvNy5ETr"
+local temp_8 = "PAMQhFbZCR"
+local temp_9 = "0uJCMqiAYH"
+print("LOG_18: " .. var_18)
+
+-- Chunk 19
+local var_19 = "VAL_6051"
+local temp_0 = "xIqZhJWnOA"
+local temp_1 = "JXAo3Et4FM"
+local temp_2 = "LpEZcRgW0t"
+local temp_3 = "C5loYzQHWN"
+local temp_4 = "YJpTqAfmrd"
+local temp_5 = "NVRx8FA9jW"
+local temp_6 = "WBvMiXOPtn"
+local temp_7 = "4xjYVuLrpG"
+local temp_8 = "BdQ1sh2FxK"
+local temp_9 = "gH9yPNkJlW"
+print("LOG_19: " .. var_19)
+
+-- Chunk 20
+local var_20 = "VAL_9905"
+local temp_0 = "LgBfiVTPKH"
+local temp_1 = "dJTxQ7YEbc"
+local temp_2 = "r2sPmgKvWA"
+local temp_3 = "FhR8YkCtMv"
+local temp_4 = "bJlXpQzO6T"
+local temp_5 = "09rLUgyVAm"
+local temp_6 = "ahvQGkSYdF"
+local temp_7 = "3xA2RLzPtu"
+local temp_8 = "OQupytMKXN"
+local temp_9 = "WFx8zTPq5R"
+print("LOG_20: " .. var_20)
+
+-- Chunk 21
+local var_21 = "VAL_3947"
+local temp_0 = "R7iTFmcWkx"
+local temp_1 = "NQu2pjLbRX"
+local temp_2 = "XyCDLfpv7B"
+local temp_3 = "tKvYhPUQo9"
+local temp_4 = "ZFMJ8bwEtp"
+local temp_5 = "c6RYopUKMv"
+local temp_6 = "y7vqxJLiKH"
+local temp_7 = "PUzWkro9gC"
+local temp_8 = "EtCmzJFAKg"
+local temp_9 = "bFoQw8XMNn"
+print("LOG_21: " .. var_21)
+
+-- Chunk 22
+local var_22 = "VAL_2173"
+local temp_0 = "ldybZXjvPC"
+local temp_1 = "AXNQuvMgl5"
+local temp_2 = "8pvIrmUYzC"
+local temp_3 = "iWJz0NP4Mk"
+local temp_4 = "kHVUgrFsRO"
+local temp_5 = "zJFMUYwvpL"
+local temp_6 = "EqWbl6XpJh"
+local temp_7 = "nLyoUkw7MC"
+local temp_8 = "ZjThfpYRXO"
+local temp_9 = "Ft5UYJkrqB"
+print("LOG_22: " .. var_22)
+
+-- Chunk 23
+local var_23 = "VAL_6230"
+local temp_0 = "OyptbdWHCR"
+local temp_1 = "B2gPNrKmzL"
+local temp_2 = "JxhfbOvQzW"
+local temp_3 = "MIa7gkWLN5"
+local temp_4 = "rUznJMX5bC"
+local temp_5 = "qlZcPYR3mw"
+local temp_6 = "UAKrvJfzXe"
+local temp_7 = "cNBRXljy6o"
+local temp_8 = "MJtpXrKZvg"
+local temp_9 = "oxq7IRmYuA"
+print("LOG_23: " .. var_23)
+
+-- Chunk 24
+local var_24 = "VAL_5809"
+local temp_0 = "jA6rPLzUFN"
+local temp_1 = "IqEcpXTJYz"
+local temp_2 = "fJpWxMYgAC"
+local temp_3 = "xtmRQFyVoZ"
+local temp_4 = "hKblOAF7yP"
+local temp_5 = "gNWArvqK0X"
+local temp_6 = "PkoCFWzRJE"
+local temp_7 = "RWUYjmOC9z"
+local temp_8 = "FqMCnXYUpE"
+local temp_9 = "bk9TJyv5wN"
+print("LOG_24: " .. var_24)
+
+-- Chunk 25
+local var_25 = "VAL_3120"
+local temp_0 = "fJZnTxLqMR"
+local temp_1 = "Kw9bgxMPzJ"
+local temp_2 = "oMxQrKpyFg"
+local temp_3 = "tbKqLMIpCv"
+local temp_4 = "Xn9lJkmFcP"
+local temp_5 = "gUvpTrw8OM"
+local temp_6 = "NJMwoplgQF"
+local temp_7 = "ovcTXRUfnK"
+local temp_8 = "qQzRpEXoYm"
+local temp_9 = "IRbKcTXzMw"
+print("LOG_25: " .. var_25)-- Chunk 26
+local var_26 = "VAL_9982"
+local temp_0 = "DF7Wx6kPLM"
+local temp_1 = "RiM0ZN9juO"
+local temp_2 = "2d5XyWFpNL"
+local temp_3 = "TkroYV9c8a"
+local temp_4 = "czD0uB3PKe"
+local temp_5 = "4JlFVx7y9s"
+local temp_6 = "BvETqm2ZtY"
+local temp_7 = "szQfpWB96L"
+local temp_8 = "jn3VtX7uBo"
+local temp_9 = "vCgLf8KoRW"
+print("LOG_26: " .. var_26)
+
+-- Chunk 27
+local var_27 = "VAL_7452"
+local temp_0 = "wZIU19NXsR"
+local temp_1 = "muAT4cGH7q"
+local temp_2 = "CZ8rfoIuXb"
+local temp_3 = "nQHpjl0rE3"
+local temp_4 = "F6YyUXWMCk"
+local temp_5 = "LRhA0Vg1oB"
+local temp_6 = "5KDHT0b9wn"
+local temp_7 = "EApGcJ8XvF"
+local temp_8 = "x9VsMzw7KD"
+local temp_9 = "t8cYe43rNm"
+print("LOG_27: " .. var_27)
+
+-- Chunk 28
+local var_28 = "VAL_1902"
+local temp_0 = "kRQvf5xZT0"
+local temp_1 = "Wpc1oHL2Jm"
+local temp_2 = "4K7ZGULwr3"
+local temp_3 = "V1ebf3jhFM"
+local temp_4 = "tNYOZXkBv9"
+local temp_5 = "hXpGVuC6Mj"
+local temp_6 = "6RfPz2yWtX"
+local temp_7 = "g07uB5mWI8"
+local temp_8 = "qW8jLnV0z2"
+local temp_9 = "V7syReZ4zF"
+print("LOG_28: " .. var_28)
+
+-- Chunk 29
+local var_29 = "VAL_5168"
+local temp_0 = "kOmFqv6Zi1"
+local temp_1 = "B8p7wYrEz9"
+local temp_2 = "XzRt1uALyJ"
+local temp_3 = "35cg9Jh4mX"
+local temp_4 = "oTzV6qMKsU"
+local temp_5 = "kPYNwZhf2g"
+local temp_6 = "yDb7ji9mQU"
+local temp_7 = "t9Fhl2WG2L"
+local temp_8 = "VAX3Eopw5C"
+local temp_9 = "qHlmIZjTkF"
+print("LOG_29: " .. var_29)
+
+-- Chunk 30
+local var_30 = "VAL_9732"
+local temp_0 = "1j0n4fYgmM"
+local temp_1 = "z3EqHpGJ0P"
+local temp_2 = "W4vbOkiL3u"
+local temp_3 = "Y2pR7Ujqwa"
+local temp_4 = "tLaB5gK8Rx"
+local temp_5 = "3MdJ0e9Upz"
+local temp_6 = "qX0kHzmVPA"
+local temp_7 = "F13jRv9WOB"
+local temp_8 = "6kznHMGb0I"
+local temp_9 = "5UQo2iM73J"
+print("LOG_30: " .. var_30)
+
+-- Chunk 31
+local var_31 = "VAL_2691"
+local temp_0 = "FcXYJk3zp1"
+local temp_1 = "N8n0AXc7wV"
+local temp_2 = "tZm9vRFLh5"
+local temp_3 = "kIF4XHpy5Q"
+local temp_4 = "V0bzDMyqfR"
+local temp_5 = "HhZmXUG9oq"
+local temp_6 = "QauJ5pZ5kN"
+local temp_7 = "2PQT8Lv3ZG"
+local temp_8 = "WlBxoMY1rV"
+local temp_9 = "eI6v8zn4aT"
+print("LOG_31: " .. var_31)
+
+-- Chunk 32
+local var_32 = "VAL_8225"
+local temp_0 = "z5K6UqxHDf"
+local temp_1 = "Qbh5Y2RP8v"
+local temp_2 = "F3xWrT4y9J"
+local temp_3 = "0zFX7Jf1YN"
+local temp_4 = "b9d62QOSkG"
+local temp_5 = "XT3jpWzB9F"
+local temp_6 = "MUVb4cZrnD"
+local temp_7 = "G0t9RL8eFz"
+local temp_8 = "I1NXyUwbGt"
+local temp_9 = "z9lYh7uBpV"
+print("LOG_32: " .. var_32)
+
+-- Chunk 33
+local var_33 = "VAL_4659"
+local temp_0 = "0AKqYlhM1s"
+local temp_1 = "hPXL74z3oB"
+local temp_2 = "n8MG5prQWI"
+local temp_3 = "yZkaVoQLg1"
+local temp_4 = "oWuF9bN3pk"
+local temp_5 = "Jfgb6X8vR7"
+local temp_6 = "XytNlrL1c0"
+local temp_7 = "K5PWm2FV8h"
+local temp_8 = "zAo3DJQipX"
+local temp_9 = "9TZvyswNR1"
+print("LOG_33: " .. var_33)
+
+-- Chunk 34
+local var_34 = "VAL_8406"
+local temp_0 = "6pY9wVBfgX"
+local temp_1 = "E2miPRFzK4"
+local temp_2 = "dCQjZt5kV6"
+local temp_3 = "zLhGFA94oP"
+local temp_4 = "Vg5pM7YTwk"
+local temp_5 = "9RB1gZ8POq"
+local temp_6 = "t2XM4jp0Ny"
+local temp_7 = "S9aQl0tvrP"
+local temp_8 = "XnK7eYmR2Q"
+local temp_9 = "ViZ4p8qG3h"
+print("LOG_34: " .. var_34)
+
+-- Chunk 35
+local var_35 = "VAL_6175"
+local temp_0 = "8TQYn5lGwV"
+local temp_1 = "2kXfZG3rtA"
+local temp_2 = "qIJ9Wo8YjF"
+local temp_3 = "gV1HZbAp9N"
+local temp_4 = "P7V0vWoymX"
+local temp_5 = "aM9tRh41jB"
+local temp_6 = "KiXEmsQZ0r"
+local temp_7 = "Lg5V4JZydT"
+local temp_8 = "dXkB7q1PoV"
+local temp_9 = "sW6M39tGZp"
+print("LOG_35: " .. var_35)
